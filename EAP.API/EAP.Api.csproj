@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>EAP.Api</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.10" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="6.2.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EAP.Application\EAP.Application.csproj" />
+    <ProjectReference Include="..\EAP.Models\EAP.Models.csproj" />
+    <ProjectReference Include="..\EAP.Infrastructure\EAP.Infrastructure.csproj" />
+    <ProjectReference Include="..\EAP.DataAccess\EAP.DataAccess.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="nlog.config" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

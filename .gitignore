@@ -1,0 +1,38 @@
+# Visual Studio / Rider user files
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+*.pubxml.user
+
+# .NET build output
+[Bb]in/
+[Oo]bj/
+artifacts/
+publish/
+
+# Test and coverage output
+TestResults/
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+
+# Local environment overrides
+appsettings.Local.json
+appsettings.*.Local.json
+.env
+.env.*
+
+# Logs and temporary files
+logs/
+*.log
+*.tmp
+*.bak
+
+# Operating system files
+.DS_Store
+Thumbs.db

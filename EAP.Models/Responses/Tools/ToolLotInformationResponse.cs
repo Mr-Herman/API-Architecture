@@ -1,0 +1,14 @@
+using System.ComponentModel.DataAnnotations;
+
+namespace EAP.Models.Responses.Tools;
+
+public sealed class ToolLotInformationResponse
+{
+    public string? ToolId { get; set; }
+    public string? EquipmentId { get; set; }
+    public decimal? LifeTimes { get; set; }
+    public decimal? LifeHours { get; set; }
+    public string? ToolPn { get; set; }
+    public string? ToolType { get; set; }
+    public string? ToolTypeName { get; set; }
+}

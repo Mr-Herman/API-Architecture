@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="Success" xml:space="preserve"><value>成功</value></data>
+  <data name="Created" xml:space="preserve"><value>新增成功</value></data>
+  <data name="Updated" xml:space="preserve"><value>更新成功</value></data>
+  <data name="Deleted" xml:space="preserve"><value>删除成功</value></data>
+  <data name="ProcessAssemblyNotFound" xml:space="preserve"><value>未找到制程装配记录</value></data>
+  <data name="Unauthorized" xml:space="preserve"><value>JWT 认证失败</value></data>
+  <data name="Forbidden" xml:space="preserve"><value>无访问权限</value></data>
+  <data name="TooManyRequests" xml:space="preserve"><value>请求过于频繁</value></data>
+  <data name="InternalServerError" xml:space="preserve"><value>服务器内部错误</value></data>
+  <data name="InvalidCredentials" xml:space="preserve"><value>客户端 ID 或客户端密钥无效</value></data>
+  <data name="InvalidParameters" xml:space="preserve"><value>请求参数无效</value></data>
+  <data name="StartTimeAfterTestTime" xml:space="preserve"><value>开始时间不能晚于测试时间</value></data>
+  <data name="InputQuantityLessThanOutputQuantity" xml:space="preserve"><value>投入数量不能小于产出数量</value></data>
+  <data name="StartTimeRangeInvalid" xml:space="preserve"><value>开始时间范围无效，开始时间不能晚于结束时间</value></data>
+  <data name="CarrierNotFound" xml:space="preserve"><value>未找到载具信息。</value></data>
+  <data name="LotNotFound" xml:space="preserve"><value>Lot 不存在。</value></data>
+  <data name="LotAlreadyBound" xml:space="preserve"><value>Lot 已经绑定。</value></data>
+  <data name="DuplicateProductionLot" xml:space="preserve"><value>生产批次号重复。</value></data>
+  <data name="NoCarrierLotBinding" xml:space="preserve"><value>未找到载具与 Lot 的绑定关系。</value></data>
+  <data name="EquipmentStatusNotFound" xml:space="preserve"><value>未找到设备状态。</value></data>
+  <data name="NoOperatorProcessBinding" xml:space="preserve"><value>未找到操作员工艺绑定关系。</value></data>
+  <data name="ProcessValidationFailed" xml:space="preserve"><value>工艺验证失败。</value></data>
+  <data name="EquipmentOperatorBindingExists" xml:space="preserve"><value>设备与操作员的绑定关系已存在。</value></data>
+  <data name="QualificationRequestFailed" xml:space="preserve"><value>员工资质服务请求失败。</value></data>
+  <data name="QualificationServiceFailed" xml:space="preserve"><value>员工资质服务返回失败。</value></data>
+  <data name="QualificationNoData" xml:space="preserve"><value>员工资质响应没有数据。</value></data>
+  <data name="OperatorNotQualified" xml:space="preserve"><value>员工不具备此操作的资质。</value></data>
+  <data name="QualificationResponseInvalid" xml:space="preserve"><value>员工资质响应无效。</value></data>
+  <data name="EquipmentProcessNotFound" xml:space="preserve"><value>未找到设备工艺登录信息。</value></data>
+  <data name="LotOrSerialNotFound" xml:space="preserve"><value>未找到 Lot 或序列号。</value></data>
+  <data name="LotCompleted" xml:space="preserve"><value>Lot 已经完成。</value></data>
+  <data name="RecipeNotFound" xml:space="preserve"><value>未找到配方。</value></data>
+  <data name="NoDatabaseRecordChanged" xml:space="preserve"><value>没有数据库记录被修改。</value></data>
+  <data name="WorkflowNotSupported" xml:space="preserve"><value>当前工作流程不支持此生产流程：</value></data>
+  <data name="ToolLotInformationNotFound" xml:space="preserve"><value>未找到工具批次信息。</value></data>
+  <data name="ToolInformationNotFound" xml:space="preserve"><value>未找到工具信息。</value></data>
+  <data name="ToolMustBeReset" xml:space="preserve"><value>更换后的工具使用前必须重置。</value></data>
+  <data name="ToolLifeReached" xml:space="preserve"><value>工具寿命已达到上限。</value></data>
+  <data name="ToolVerificationPassed" xml:space="preserve"><value>工具验证通过。</value></data>
+  <data name="OperatorNotFound" xml:space="preserve"><value>操作员不存在。</value></data>
+  <data name="OperatorPasswordIncorrect" xml:space="preserve"><value>操作员密码错误。</value></data>
+  <data name="EquipmentNotAvailable" xml:space="preserve"><value>设备无效或不处于正常运行状态。</value></data>
+  <data name="QualityInspectionTypeInvalid" xml:space="preserve"><value>InspectType 必须是 FAI 或 PI。</value></data>
+  <data name="QualityFaiProcessMappingNotFound" xml:space="preserve"><value>未找到 QA FAI 工序映射。</value></data>
+  <data name="QualityFaiEquipmentNotConfigured" xml:space="preserve"><value>该设备未配置到对应的 QA FAI 工序。</value></data>
+  <data name="QualityFaiValidationPassed" xml:space="preserve"><value>FAI 验证通过。</value></data>
+  <data name="QualityFaiValidationFailed" xml:space="preserve"><value>FAI 验证失败，存在不合格记录或没有检验记录。</value></data>
+  <data name="QualitySpcProcessMappingNotFound" xml:space="preserve"><value>未找到 QA SPC 工序映射。</value></data>
+  <data name="QualitySpcEquipmentNotConfigured" xml:space="preserve"><value>该设备未配置到对应的 QA SPC 工序。</value></data>
+  <data name="QualitySpcDataNotFound" xml:space="preserve"><value>未找到 SPC 检验数据。</value></data>
+  <data name="QualitySpcValidationPassed" xml:space="preserve"><value>SPC 验证通过。</value></data>
+  <data name="QualitySpcValidationFailed" xml:space="preserve"><value>SPC 验证失败。</value></data>
+  <data name="TransactionAlreadyCompleted" xml:space="preserve"><value>该事务已成功处理，无需重复执行。</value></data>
+  <data name="TrackingContextNotFound" xml:space="preserve"><value>未找到设备登录、Lot 或工序配置信息。</value></data>
+  <data name="TrackingTraceWayInvalid" xml:space="preserve"><value>TraceWay 与配置的生产流程不匹配。</value></data>
+  <data name="TrackInSucceeded" xml:space="preserve"><value>TrackIn 成功。</value></data>
+  <data name="TrackOutSucceeded" xml:space="preserve"><value>TrackOut 成功。</value></data>
+  <data name="TrackInDataNotFound" xml:space="preserve"><value>未找到该 Lot 的 TrackIn 数据。</value></data>
+  <data name="LotAlreadyTrackedOut" xml:space="preserve"><value>该 Lot 已经 TrackOut，不能重复操作。</value></data>
+  <data name="TrackOutProcessMismatch" xml:space="preserve"><value>TrackIn 工序与当前设备工序不匹配。</value></data>
+  <data name="TrackOutQuantityMismatch" xml:space="preserve"><value>TrackOut 数量与 TrackIn 数量不一致。</value></data>
+  <data name="TrackOutResultRequired" xml:space="preserve"><value>至少需要一条 TrackOut 结果。</value></data>
+  <data name="SnNotTrackedIn" xml:space="preserve"><value>该序列号尚未 TrackIn。</value></data>
+  <data name="TrackOutEquipmentMismatch" xml:space="preserve"><value>TrackOut 设备与 TrackIn 设备不一致。</value></data>
+  <data name="PassCannotOnlineRework" xml:space="preserve"><value>PASS 结果不能执行在线返工。</value></data>
+  <data name="ProcessResultInvalid" xml:space="preserve"><value>ProcessResult 只能是 PASS 或 FAIL。</value></data>
+  <data name="PassCannotContainDefect" xml:space="preserve"><value>PASS 结果不能包含缺陷信息。</value></data>
+  <data name="FailRequiresValidDefect" xml:space="preserve"><value>FAIL 结果必须提供有效的缺陷代码。</value></data>
+  <data name="MaterialComponentCountMismatch" xml:space="preserve"><value>设备上料的组件数量与工序需求不一致。</value></data>
+  <data name="RequiredMaterialNotLoaded" xml:space="preserve"><value>设备未加载工序要求的物料。</value></data>
+  <data name="LoadedMaterialExpired" xml:space="preserve"><value>设备上加载的物料已过期。</value></data>
+  <data name="LoadedMaterialInsufficient" xml:space="preserve"><value>设备上物料的剩余数量不足。</value></data>
+</root>

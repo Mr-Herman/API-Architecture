@@ -62,4 +62,5 @@ public static class HealthCheckExtensions
 
         return app;
     }
+
 }

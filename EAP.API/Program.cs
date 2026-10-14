@@ -34,13 +34,14 @@ app.UseRequestLocalization();
 app.UseMiddleware<SecurityHeaderMiddleware>();
 app.UseMiddleware<JwtUnauthorizedMiddleware>();
 
-app.UseApiDocumentation();
-
 if (!app.Environment.IsDevelopment())
 {
     app.UseHsts();
     app.UseHttpsRedirection();
 }
+
+app.UseStaticFiles();
+app.UseApiDocumentation();
 
 app.UseAuthentication();
 app.UseRateLimiter();

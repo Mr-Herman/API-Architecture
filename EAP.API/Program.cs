@@ -34,8 +34,7 @@ app.UseRequestLocalization();
 app.UseMiddleware<SecurityHeaderMiddleware>();
 app.UseMiddleware<JwtUnauthorizedMiddleware>();
 
-app.UseSwagger();
-app.UseSwaggerUI();
+app.UseApiDocumentation();
 
 if (!app.Environment.IsDevelopment())
 {

@@ -36,9 +36,18 @@ public static class HealthCheckExtensions
 
     public static WebApplication MapApiHealthEndpoints(this WebApplication app)
     {
-        app.MapGet("/", () => Results.Redirect("/swagger/index.html"))
-            .AllowAnonymous()
-            .ExcludeFromDescription();
+        if (app.IsApiDocumentationEnabled())
+        {
+            app.MapGet("/", () => Results.Redirect("/swagger/index.html"))
+                .AllowAnonymous()
+                .ExcludeFromDescription();
+        }
+        else
+        {
+            app.MapGet("/", () => Results.Ok("EAP Web API is running."))
+                .AllowAnonymous()
+                .ExcludeFromDescription();
+        }
 
         app.MapGet("/health/live", () => Results.Ok("Healthy"))
             .AllowAnonymous();

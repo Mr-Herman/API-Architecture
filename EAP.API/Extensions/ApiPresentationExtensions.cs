@@ -12,6 +12,8 @@ namespace EAP.Api.Extensions;
 
 public static class ApiPresentationExtensions
 {
+    private const string SwaggerEnabledConfigurationKey = "Swagger:Enabled";
+
     public static IServiceCollection AddApiControllers(this IServiceCollection services)
     {
         services.AddScoped<ActionTimingFilter>();
@@ -35,8 +37,7 @@ public static class ApiPresentationExtensions
                 var localizer = context.HttpContext.RequestServices.GetRequiredService<IMessageLocalizer>();
 
                 var result = ApiResult<object>.FailResult(
-                    localizer["InvalidParameters"],
-                    BusinessCode.ParamError);
+                    localizer["InvalidParameters"]);
 
                 return new BadRequestObjectResult(result);
             };
@@ -89,6 +90,38 @@ public static class ApiPresentationExtensions
         });
 
         return services;
+    }
+
+    public static WebApplication UseApiDocumentation(this WebApplication app)
+    {
+        if (!app.IsApiDocumentationEnabled())
+        {
+            return app;
+        }
+
+        app.UseSwagger();
+        app.UseSwaggerUI();
+
+        if (!app.Environment.IsDevelopment())
+        {
+            app.Logger.LogWarning("Swagger is enabled outside the Development environment.");
+        }
+
+        return app;
+    }
+
+    public static bool IsApiDocumentationEnabled(this WebApplication app)
+    {
+        return IsApiDocumentationEnabled(app.Environment, app.Configuration);
+    }
+
+    public static bool IsApiDocumentationEnabled(IWebHostEnvironment environment, IConfiguration configuration)
+    {
+        ArgumentNullException.ThrowIfNull(environment);
+        ArgumentNullException.ThrowIfNull(configuration);
+
+        return environment.IsDevelopment()
+            || configuration.GetValue<bool>(SwaggerEnabledConfigurationKey);
     }
 
     private static Task<ProviderCultureResult?> ResolveRequestCultureAsync(HttpContext context)

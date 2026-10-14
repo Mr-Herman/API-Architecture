@@ -23,6 +23,10 @@ public static class ApiPresentationExtensions
         {
             options.JsonSerializerOptions.PropertyNamingPolicy = null;
         });
+        services.ConfigureHttpJsonOptions(options =>
+        {
+            options.SerializerOptions.PropertyNamingPolicy = null;
+        });
 
         services.Configure<ApiBehaviorOptions>(options =>
         {

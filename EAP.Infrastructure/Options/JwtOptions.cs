@@ -17,4 +17,5 @@ public sealed class JwtClientOptions
     public string ClientId { get; set; } = string.Empty;
     public string ClientSecret { get; set; } = string.Empty;
     public string ClientName { get; set; } = string.Empty;
+    public bool AcceptEapClientIds { get; set; }
 }

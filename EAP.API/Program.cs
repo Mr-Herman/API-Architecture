@@ -3,6 +3,7 @@ using EAP.Api.Middlewares;
 using EAP.Application;
 using EAP.Infrastructure;
 using EAP.DataAccess;
+using EAP.Api.RateLimiting;
 using NLog.Web;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -44,6 +45,7 @@ app.UseStaticFiles();
 app.UseApiDocumentation();
 
 app.UseAuthentication();
+app.UseMiddleware<EapClientRequestProtectionMiddleware>();
 app.UseRateLimiter();
 app.UseAuthorization();
 

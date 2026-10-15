@@ -5,6 +5,7 @@ using System.Text;
 using EAP.Application.Interfaces;
 using EAP.Models.Requests.Auth;
 using EAP.Models.Responses.Auth;
+using EAP.Models.Constants;
 using EAP.Infrastructure.Options;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -26,10 +27,9 @@ public sealed class JwtTokenService : ITokenService
     public Task<TokenResponse?> CreateTokenAsync(string clientId, string clientSecret, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
-        var client = _jwtOptions.Clients.FirstOrDefault(x =>
-            string.Equals(x.ClientId, clientId, StringComparison.Ordinal));
+        var client = ResolveClient(clientId, clientSecret);
 
-        if (client is null || !FixedTimeEquals(client.ClientSecret, clientSecret))
+        if (client is null)
         {
             _logger.LogWarning("[AUTH_FAILED] Token request rejected. ClientId={ClientId}", clientId);
             return Task.FromResult<TokenResponse?>(null);
@@ -39,9 +39,11 @@ public sealed class JwtTokenService : ITokenService
         var expires = now.AddMinutes(_jwtOptions.AccessTokenMinutes);
         var claims = new List<Claim>
         {
-            new(JwtRegisteredClaimNames.Sub, client.ClientId),
+            new(JwtRegisteredClaimNames.Sub, clientId),
             new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
-            new("ClientName", client.ClientName)
+            new(JwtClaimNames.ClientName, client.ClientName),
+            new(JwtClaimNames.ClientSystem, client.ClientId),
+            new(JwtClaimNames.EapClientId, clientId)
         };
         var credentials = new SigningCredentials(
             new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOptions.SigningKey)),
@@ -54,13 +56,34 @@ public sealed class JwtTokenService : ITokenService
             expires: expires,
             signingCredentials: credentials);
 
-        _logger.LogDebug("[AUTH_SUCCESS] Access token issued. ClientId={ClientId} ExpiresAtUtc={ExpiresAtUtc}", clientId, expires);
+        _logger.LogDebug(
+            "[AUTH_SUCCESS] Access token created. ClientSystem={ClientSystem} EapClientId={EapClientId} ExpiresAtUtc={ExpiresAtUtc}",
+            client.ClientId,
+            clientId,
+            expires);
         return Task.FromResult<TokenResponse?>(new TokenResponse
         {
             AccessToken = new JwtSecurityTokenHandler().WriteToken(token),
             ExpiresIn = (int)TimeSpan.FromMinutes(_jwtOptions.AccessTokenMinutes).TotalSeconds,
             ExpiresAtUtc = expires
         });
+    }
+
+    private JwtClientOptions? ResolveClient(string clientId, string clientSecret)
+    {
+        var exactClient = _jwtOptions.Clients.FirstOrDefault(client =>
+            string.Equals(client.ClientId, clientId, StringComparison.Ordinal));
+
+        if (exactClient is not null)
+        {
+            return FixedTimeEquals(exactClient.ClientSecret, clientSecret)
+                ? exactClient
+                : null;
+        }
+
+        return _jwtOptions.Clients.FirstOrDefault(client =>
+            client.AcceptEapClientIds
+            && FixedTimeEquals(client.ClientSecret, clientSecret));
     }
 
     private static bool FixedTimeEquals(string expected, string actual)

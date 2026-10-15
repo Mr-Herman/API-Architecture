@@ -76,4 +76,7 @@
   <data name="RequiredMaterialNotLoaded" xml:space="preserve"><value>设备未加载工序要求的物料。</value></data>
   <data name="LoadedMaterialExpired" xml:space="preserve"><value>设备上加载的物料已过期。</value></data>
   <data name="LoadedMaterialInsufficient" xml:space="preserve"><value>设备上物料的剩余数量不足。</value></data>
+  <data name="EapClientRequestAbnormal" xml:space="preserve"><value>检测到 EAP 客户端请求频率异常，请稍后重试</value></data>
+  <data name="EapClientTemporarilyBlocked" xml:space="preserve"><value>EAP 客户端请求过于频繁，已临时限制访问</value></data>
+  <data name="TokenRequestTooFrequent" xml:space="preserve"><value>Token 获取过于频繁，请复用当前 Token 后稍后重试</value></data>
 </root>

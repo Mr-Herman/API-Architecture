@@ -1,5 +1,6 @@
 using System.Text;
 using EAP.Infrastructure.Options;
+using EAP.Models.Constants;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
@@ -31,6 +32,8 @@ public static class AuthenticationExtensions
                 "API client secrets must contain at least 16 characters.")
             .Validate(ClientIdsAreUnique,
                 "API client IDs must be unique.")
+            .Validate(ClientSecretsAreUnique,
+                "API clients must use unique secrets.")
             .ValidateOnStart();
 
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -63,7 +66,7 @@ public static class AuthenticationExtensions
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.SigningKey)),
             ClockSkew = TimeSpan.FromSeconds(jwt.ClockSkewSeconds),
-            NameClaimType = "ClientName"
+            NameClaimType = JwtClaimNames.ClientName
         };
     }
 
@@ -124,5 +127,20 @@ public static class AuthenticationExtensions
             .Count();
 
         return uniqueClientCount == options.Clients.Count;
+    }
+
+    private static bool ClientSecretsAreUnique(JwtOptions options)
+    {
+        if (options.Clients is null || options.Clients.Any(client => client is null))
+        {
+            return false;
+        }
+
+        var uniqueSecretCount = options.Clients
+            .Select(client => client.ClientSecret)
+            .Distinct(StringComparer.Ordinal)
+            .Count();
+
+        return uniqueSecretCount == options.Clients.Count;
     }
 }

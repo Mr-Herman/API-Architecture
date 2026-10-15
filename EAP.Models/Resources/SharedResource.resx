@@ -76,4 +76,7 @@
   <data name="RequiredMaterialNotLoaded" xml:space="preserve"><value>A required material is not loaded on the equipment.</value></data>
   <data name="LoadedMaterialExpired" xml:space="preserve"><value>A loaded material has expired.</value></data>
   <data name="LoadedMaterialInsufficient" xml:space="preserve"><value>The remaining material quantity is insufficient.</value></data>
+  <data name="EapClientRequestAbnormal" xml:space="preserve"><value>Abnormal request frequency detected. Please retry later.</value></data>
+  <data name="EapClientTemporarilyBlocked" xml:space="preserve"><value>This EAP client has been temporarily blocked because of excessive requests.</value></data>
+  <data name="TokenRequestTooFrequent" xml:space="preserve"><value>Token requests are too frequent. Please reuse the current token and retry later.</value></data>
 </root>

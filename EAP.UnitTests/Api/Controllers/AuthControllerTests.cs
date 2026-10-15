@@ -55,8 +55,8 @@ public sealed class AuthControllerTests
         var result = await controller.CreateToken(request, CancellationToken.None);
 
         Assert.Equal(StatusCodes.Status429TooManyRequests, controller.Response.StatusCode);
-        Assert.Equal(0, result.Status);
-        Assert.Equal("Too frequent", result.ReturnMessage);
+        Assert.False(result.Success);
+        Assert.Equal("Too frequent", result.Message);
         tokenService.Verify(
             service => service.CreateTokenAsync("EAP-001", "secret", It.IsAny<CancellationToken>()),
             Times.Exactly(4));
@@ -87,23 +87,16 @@ public sealed class AuthControllerTests
         var validRequest = new TokenRequest { ClientId = "EAP-001", ClientSecret = "correct-secret" };
         var result = await controller.CreateToken(validRequest, CancellationToken.None);
 
-        Assert.Equal(1, result.Status);
+        Assert.True(result.Success);
         Assert.Equal(StatusCodes.Status200OK, controller.Response.StatusCode);
         protection.Verify(
             service => service.CheckTokenRequest("EAP-001"),
             Times.Once);
     }
 
-    private static AuthController CreateController(
-        ITokenService tokenService,
-        IMessageLocalizer localizer,
-        IEapClientRequestProtection protection)
+    private static AuthController CreateController(ITokenService tokenService, IMessageLocalizer localizer, IEapClientRequestProtection protection)
     {
-        var controller = new AuthController(
-            tokenService,
-            localizer,
-            protection,
-            NullLogger<AuthController>.Instance);
+        var controller = new AuthController(tokenService, localizer, protection, NullLogger<AuthController>.Instance);
 
         controller.ControllerContext = new ControllerContext
         {

@@ -54,8 +54,7 @@ public static class RateLimitingExtensions
         var localizer = context.HttpContext.RequestServices
             .GetRequiredService<IMessageLocalizer>();
 
-        var result = ApiResult<object>.FailResult(
-            localizer["TooManyRequests"]);
+        var result = ApiResult<object>.FailResult(localizer["TooManyRequests"], 4007);
 
         if (context.Lease.TryGetMetadata(MetadataName.RetryAfter, out var retryAfter))
         {

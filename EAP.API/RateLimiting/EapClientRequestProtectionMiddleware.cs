@@ -87,7 +87,7 @@ public sealed class EapClientRequestProtectionMiddleware
         context.Response.ContentType = "application/json; charset=utf-8";
         context.Response.Headers.RetryAfter = decision.RetryAfterSeconds.ToString();
 
-        var result = ApiResult<object>.FailResult(localizer[messageKey]);
+        var result = ApiResult<object>.FailResult(localizer[messageKey], 4007);
         await context.Response.WriteAsJsonAsync(result, context.RequestAborted);
     }
 
@@ -96,7 +96,7 @@ public sealed class EapClientRequestProtectionMiddleware
         context.Response.StatusCode = StatusCodes.Status403Forbidden;
         context.Response.ContentType = "application/json; charset=utf-8";
 
-        var result = ApiResult<object>.FailResult(localizer["Forbidden"]);
+        var result = ApiResult<object>.FailResult(localizer["Forbidden"], 4007);
         await context.Response.WriteAsJsonAsync(result, context.RequestAborted);
     }
 }

@@ -36,8 +36,7 @@ public static class ApiPresentationExtensions
             {
                 var localizer = context.HttpContext.RequestServices.GetRequiredService<IMessageLocalizer>();
 
-                var result = ApiResult<object>.FailResult(
-                    localizer["InvalidParameters"]);
+                var result = ApiResult<object>.FailResult(localizer["InvalidParameters"], 4005);
 
                 return new BadRequestObjectResult(result);
             };

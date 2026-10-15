@@ -52,7 +52,7 @@ public sealed class AuthController : ControllerBase
                     decision.RetryAfterSeconds);
             }
 
-            return ApiResult<TokenResponse>.FailResult(_localizer["TokenRequestTooFrequent"]);
+            return ApiResult<TokenResponse>.FailResult(_localizer["TokenRequestTooFrequent"], 4007);
         }
 
         return ApiResult<TokenResponse>.SuccessResult(token, _localizer["Success"]);

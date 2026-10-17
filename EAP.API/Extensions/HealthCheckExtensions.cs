@@ -36,6 +36,10 @@ public static class HealthCheckExtensions
 
     public static WebApplication MapApiHealthEndpoints(this WebApplication app)
     {
+        app.MapMethods("/", new[] { HttpMethods.Head }, () => Results.Ok())
+            .AllowAnonymous()
+            .ExcludeFromDescription();
+
         if (app.IsApiDocumentationEnabled())
         {
             app.MapGet("/", () => Results.Redirect("/swagger/index.html"))

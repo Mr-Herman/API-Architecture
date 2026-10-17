@@ -159,7 +159,8 @@ public sealed class RequestLoggingMiddleware
 
     private static bool ShouldSkipTechnicalRequest(HttpContext context)
     {
-        if (context.Request.Path.StartsWithSegments("/ops/logs")
+        if ((HttpMethods.IsHead(context.Request.Method) && context.Request.Path.Equals("/"))
+            || context.Request.Path.StartsWithSegments("/ops/logs")
             || context.Request.Path.StartsWithSegments("/log-viewer")
             || context.Request.Path.StartsWithSegments("/LogViewer")
             || context.Request.Path.Equals("/favicon.ico"))

@@ -1,82 +1,363 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
-  <resheader name="version"><value>2.0</value></resheader>
-  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
-  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
-  <data name="Success" xml:space="preserve"><value>Success</value></data>
-  <data name="Created" xml:space="preserve"><value>Created successfully</value></data>
-  <data name="Updated" xml:space="preserve"><value>Updated successfully</value></data>
-  <data name="Deleted" xml:space="preserve"><value>Deleted successfully</value></data>
-  <data name="ProcessAssemblyNotFound" xml:space="preserve"><value>Process assembly record was not found</value></data>
-  <data name="Unauthorized" xml:space="preserve"><value>JWT authentication failed</value></data>
-  <data name="Forbidden" xml:space="preserve"><value>Access denied</value></data>
-  <data name="TooManyRequests" xml:space="preserve"><value>Too many requests</value></data>
-  <data name="InternalServerError" xml:space="preserve"><value>Internal server error</value></data>
-  <data name="InvalidCredentials" xml:space="preserve"><value>Invalid client ID or client secret</value></data>
-  <data name="InvalidParameters" xml:space="preserve"><value>Invalid request parameters</value></data>
-  <data name="StartTimeAfterTestTime" xml:space="preserve"><value>Start time cannot be later than test time</value></data>
-  <data name="InputQuantityLessThanOutputQuantity" xml:space="preserve"><value>Input quantity cannot be less than output quantity</value></data>
-  <data name="StartTimeRangeInvalid" xml:space="preserve"><value>Start time from cannot be later than start time to</value></data>
-  <data name="CarrierNotFound" xml:space="preserve"><value>Carrier information was not found.</value></data>
-  <data name="LotNotFound" xml:space="preserve"><value>Lot ID does not exist.</value></data>
-  <data name="LotAlreadyBound" xml:space="preserve"><value>This lot is already bound.</value></data>
-  <data name="DuplicateProductionLot" xml:space="preserve"><value>Duplicate production lot number.</value></data>
-  <data name="NoCarrierLotBinding" xml:space="preserve"><value>No carrier lot binding was found.</value></data>
-  <data name="EquipmentStatusNotFound" xml:space="preserve"><value>Equipment status was not found.</value></data>
-  <data name="NoOperatorProcessBinding" xml:space="preserve"><value>No operator process binding was found.</value></data>
-  <data name="ProcessValidationFailed" xml:space="preserve"><value>Process validation failed.</value></data>
-  <data name="EquipmentOperatorBindingExists" xml:space="preserve"><value>The equipment and operator binding already exists.</value></data>
-  <data name="QualificationRequestFailed" xml:space="preserve"><value>Employee qualification service request failed.</value></data>
-  <data name="QualificationServiceFailed" xml:space="preserve"><value>Employee qualification service returned failure.</value></data>
-  <data name="QualificationNoData" xml:space="preserve"><value>Employee qualification response has no data.</value></data>
-  <data name="OperatorNotQualified" xml:space="preserve"><value>Employee is not qualified for this operation.</value></data>
-  <data name="QualificationResponseInvalid" xml:space="preserve"><value>Employee qualification response is invalid.</value></data>
-  <data name="EquipmentProcessNotFound" xml:space="preserve"><value>No equipment process login was found.</value></data>
-  <data name="LotOrSerialNotFound" xml:space="preserve"><value>The lot or serial number was not found.</value></data>
-  <data name="LotCompleted" xml:space="preserve"><value>The lot has already been completed.</value></data>
-  <data name="RecipeNotFound" xml:space="preserve"><value>Recipe was not found.</value></data>
-  <data name="NoDatabaseRecordChanged" xml:space="preserve"><value>No database record was changed.</value></data>
-  <data name="WorkflowNotSupported" xml:space="preserve"><value>The workflow does not support this production flow: </value></data>
-  <data name="ToolLotInformationNotFound" xml:space="preserve"><value>Tool lot information was not found.</value></data>
-  <data name="ToolInformationNotFound" xml:space="preserve"><value>Tool information was not found.</value></data>
-  <data name="ToolMustBeReset" xml:space="preserve"><value>The replaced tool must be reset before use.</value></data>
-  <data name="ToolLifeReached" xml:space="preserve"><value>The tool life has been reached.</value></data>
-  <data name="ToolVerificationPassed" xml:space="preserve"><value>Tool verification passed.</value></data>
-  <data name="OperatorNotFound" xml:space="preserve"><value>The operator does not exist.</value></data>
-  <data name="OperatorPasswordIncorrect" xml:space="preserve"><value>The operator password is incorrect.</value></data>
-  <data name="EquipmentNotAvailable" xml:space="preserve"><value>The equipment is invalid or not in normal running status.</value></data>
-  <data name="QualityInspectionTypeInvalid" xml:space="preserve"><value>InspectType must be FAI or PI.</value></data>
-  <data name="QualityFaiProcessMappingNotFound" xml:space="preserve"><value>The QA FAI process mapping was not found.</value></data>
-  <data name="QualityFaiEquipmentNotConfigured" xml:space="preserve"><value>The equipment is not configured for this QA FAI process.</value></data>
-  <data name="QualityFaiValidationPassed" xml:space="preserve"><value>FAI validation passed.</value></data>
-  <data name="QualityFaiValidationFailed" xml:space="preserve"><value>FAI validation failed because an inspection failed or no inspection record was found.</value></data>
-  <data name="QualitySpcProcessMappingNotFound" xml:space="preserve"><value>The QA SPC process mapping was not found.</value></data>
-  <data name="QualitySpcEquipmentNotConfigured" xml:space="preserve"><value>The equipment is not configured for this QA SPC process.</value></data>
-  <data name="QualitySpcDataNotFound" xml:space="preserve"><value>No SPC inspection data was found.</value></data>
-  <data name="QualitySpcValidationPassed" xml:space="preserve"><value>SPC validation passed.</value></data>
-  <data name="QualitySpcValidationFailed" xml:space="preserve"><value>SPC validation failed.</value></data>
-  <data name="TransactionAlreadyCompleted" xml:space="preserve"><value>The transaction has already completed.</value></data>
-  <data name="TrackingContextNotFound" xml:space="preserve"><value>Equipment login, lot, or process configuration was not found.</value></data>
-  <data name="TrackingTraceWayInvalid" xml:space="preserve"><value>TraceWay does not match the configured production flow.</value></data>
-  <data name="TrackInSucceeded" xml:space="preserve"><value>TrackIn succeeded.</value></data>
-  <data name="TrackOutSucceeded" xml:space="preserve"><value>TrackOut succeeded.</value></data>
-  <data name="TrackInDataNotFound" xml:space="preserve"><value>TrackIn data was not found for this lot.</value></data>
-  <data name="LotAlreadyTrackedOut" xml:space="preserve"><value>This lot has already been tracked out.</value></data>
-  <data name="TrackOutProcessMismatch" xml:space="preserve"><value>The TrackIn process does not match the equipment process.</value></data>
-  <data name="TrackOutQuantityMismatch" xml:space="preserve"><value>The TrackOut quantity does not match the TrackIn quantity.</value></data>
-  <data name="TrackOutResultRequired" xml:space="preserve"><value>At least one TrackOut result is required.</value></data>
-  <data name="SnNotTrackedIn" xml:space="preserve"><value>The serial number has not been tracked in.</value></data>
-  <data name="TrackOutEquipmentMismatch" xml:space="preserve"><value>The TrackOut equipment does not match the TrackIn equipment.</value></data>
-  <data name="PassCannotOnlineRework" xml:space="preserve"><value>A PASS result cannot request online rework.</value></data>
-  <data name="ProcessResultInvalid" xml:space="preserve"><value>ProcessResult must be PASS or FAIL.</value></data>
-  <data name="PassCannotContainDefect" xml:space="preserve"><value>A PASS result cannot contain defect information.</value></data>
-  <data name="FailRequiresValidDefect" xml:space="preserve"><value>A FAIL result requires a valid defect code.</value></data>
-  <data name="MaterialComponentCountMismatch" xml:space="preserve"><value>The loaded component count does not match the process requirement.</value></data>
-  <data name="RequiredMaterialNotLoaded" xml:space="preserve"><value>A required material is not loaded on the equipment.</value></data>
-  <data name="LoadedMaterialExpired" xml:space="preserve"><value>A loaded material has expired.</value></data>
-  <data name="LoadedMaterialInsufficient" xml:space="preserve"><value>The remaining material quantity is insufficient.</value></data>
-  <data name="EapClientRequestAbnormal" xml:space="preserve"><value>Abnormal request frequency detected. Please retry later.</value></data>
-  <data name="EapClientTemporarilyBlocked" xml:space="preserve"><value>This EAP client has been temporarily blocked because of excessive requests.</value></data>
-  <data name="TokenRequestTooFrequent" xml:space="preserve"><value>Token requests are too frequent. Please reuse the current token and retry later.</value></data>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Created successfully</value>
+  </data>
+  <data name="Updated" xml:space="preserve">
+    <value>Updated successfully</value>
+  </data>
+  <data name="Deleted" xml:space="preserve">
+    <value>Deleted successfully</value>
+  </data>
+  <data name="ProcessAssemblyNotFound" xml:space="preserve">
+    <value>Process assembly record was not found</value>
+  </data>
+  <data name="Unauthorized" xml:space="preserve">
+    <value>JWT authentication failed</value>
+  </data>
+  <data name="Forbidden" xml:space="preserve">
+    <value>Access denied</value>
+  </data>
+  <data name="TooManyRequests" xml:space="preserve">
+    <value>Too many requests</value>
+  </data>
+  <data name="InternalServerError" xml:space="preserve">
+    <value>Internal server error</value>
+  </data>
+  <data name="InvalidCredentials" xml:space="preserve">
+    <value>Invalid client ID or client secret</value>
+  </data>
+  <data name="InvalidParameters" xml:space="preserve">
+    <value>Invalid request parameters</value>
+  </data>
+  <data name="StartTimeAfterTestTime" xml:space="preserve">
+    <value>Start time cannot be later than test time</value>
+  </data>
+  <data name="InputQuantityLessThanOutputQuantity" xml:space="preserve">
+    <value>Input quantity cannot be less than output quantity</value>
+  </data>
+  <data name="StartTimeRangeInvalid" xml:space="preserve">
+    <value>Start time from cannot be later than start time to</value>
+  </data>
+  <data name="CarrierNotFound" xml:space="preserve">
+    <value>Carrier information was not found.</value>
+  </data>
+  <data name="LotNotFound" xml:space="preserve">
+    <value>Lot ID does not exist.</value>
+  </data>
+  <data name="LotAlreadyBound" xml:space="preserve">
+    <value>This lot is already bound.</value>
+  </data>
+  <data name="DuplicateProductionLot" xml:space="preserve">
+    <value>Duplicate production lot number.</value>
+  </data>
+  <data name="NoCarrierLotBinding" xml:space="preserve">
+    <value>No carrier lot binding was found.</value>
+  </data>
+  <data name="EquipmentStatusNotFound" xml:space="preserve">
+    <value>Equipment status was not found.</value>
+  </data>
+  <data name="NoOperatorProcessBinding" xml:space="preserve">
+    <value>No operator process binding was found.</value>
+  </data>
+  <data name="ProcessValidationFailed" xml:space="preserve">
+    <value>Process validation failed.</value>
+  </data>
+  <data name="EquipmentOperatorBindingExists" xml:space="preserve">
+    <value>The equipment and operator binding already exists.</value>
+  </data>
+  <data name="QualificationRequestFailed" xml:space="preserve">
+    <value>Employee qualification service request failed.</value>
+  </data>
+  <data name="QualificationServiceFailed" xml:space="preserve">
+    <value>Employee qualification service returned failure.</value>
+  </data>
+  <data name="QualificationNoData" xml:space="preserve">
+    <value>Employee qualification response has no data.</value>
+  </data>
+  <data name="OperatorNotQualified" xml:space="preserve">
+    <value>Employee is not qualified for this operation.</value>
+  </data>
+  <data name="QualificationResponseInvalid" xml:space="preserve">
+    <value>Employee qualification response is invalid.</value>
+  </data>
+  <data name="EquipmentProcessNotFound" xml:space="preserve">
+    <value>No equipment process login was found.</value>
+  </data>
+  <data name="LotOrSerialNotFound" xml:space="preserve">
+    <value>The lot or serial number was not found.</value>
+  </data>
+  <data name="LotCompleted" xml:space="preserve">
+    <value>The lot has already been completed.</value>
+  </data>
+  <data name="RecipeNotFound" xml:space="preserve">
+    <value>Recipe was not found.</value>
+  </data>
+  <data name="NoDatabaseRecordChanged" xml:space="preserve">
+    <value>No database record was changed.</value>
+  </data>
+  <data name="WorkflowNotSupported" xml:space="preserve">
+    <value>The workflow does not support this production flow: </value>
+  </data>
+  <data name="ToolLotInformationNotFound" xml:space="preserve">
+    <value>Tool lot information was not found.</value>
+  </data>
+  <data name="ToolInformationNotFound" xml:space="preserve">
+    <value>Tool information was not found.</value>
+  </data>
+  <data name="ToolMustBeReset" xml:space="preserve">
+    <value>The replaced tool must be reset before use.</value>
+  </data>
+  <data name="ToolLifeReached" xml:space="preserve">
+    <value>The tool life has been reached.</value>
+  </data>
+  <data name="ToolVerificationPassed" xml:space="preserve">
+    <value>Tool verification passed.</value>
+  </data>
+  <data name="OperatorNotFound" xml:space="preserve">
+    <value>The operator does not exist.</value>
+  </data>
+  <data name="OperatorPasswordIncorrect" xml:space="preserve">
+    <value>The operator password is incorrect.</value>
+  </data>
+  <data name="EquipmentNotAvailable" xml:space="preserve">
+    <value>The equipment is invalid or not in normal running status.</value>
+  </data>
+  <data name="QualityInspectionTypeInvalid" xml:space="preserve">
+    <value>InspectType must be FAI or PI.</value>
+  </data>
+  <data name="QualityFaiProcessMappingNotFound" xml:space="preserve">
+    <value>The QA FAI process mapping was not found.</value>
+  </data>
+  <data name="QualityFaiEquipmentNotConfigured" xml:space="preserve">
+    <value>The equipment is not configured for this QA FAI process.</value>
+  </data>
+  <data name="QualityFaiValidationPassed" xml:space="preserve">
+    <value>FAI validation passed.</value>
+  </data>
+  <data name="QualityFaiValidationFailed" xml:space="preserve">
+    <value>FAI validation failed because an inspection failed or no inspection record was found.</value>
+  </data>
+  <data name="QualitySpcProcessMappingNotFound" xml:space="preserve">
+    <value>The QA SPC process mapping was not found.</value>
+  </data>
+  <data name="QualitySpcEquipmentNotConfigured" xml:space="preserve">
+    <value>The equipment is not configured for this QA SPC process.</value>
+  </data>
+  <data name="QualitySpcDataNotFound" xml:space="preserve">
+    <value>No SPC inspection data was found.</value>
+  </data>
+  <data name="QualitySpcValidationPassed" xml:space="preserve">
+    <value>SPC validation passed.</value>
+  </data>
+  <data name="QualitySpcValidationFailed" xml:space="preserve">
+    <value>SPC validation failed.</value>
+  </data>
+  <data name="TransactionAlreadyCompleted" xml:space="preserve">
+    <value>The transaction has already completed.</value>
+  </data>
+  <data name="TrackingContextNotFound" xml:space="preserve">
+    <value>Equipment login, lot, or process configuration was not found.</value>
+  </data>
+  <data name="TrackingTraceWayInvalid" xml:space="preserve">
+    <value>TraceWay does not match the configured production flow.</value>
+  </data>
+  <data name="TrackInSucceeded" xml:space="preserve">
+    <value>TrackIn succeeded.</value>
+  </data>
+  <data name="TrackOutSucceeded" xml:space="preserve">
+    <value>TrackOut succeeded.</value>
+  </data>
+  <data name="TrackInDataNotFound" xml:space="preserve">
+    <value>TrackIn data was not found for this lot.</value>
+  </data>
+  <data name="LotAlreadyTrackedOut" xml:space="preserve">
+    <value>This lot has already been tracked out.</value>
+  </data>
+  <data name="TrackOutProcessMismatch" xml:space="preserve">
+    <value>The TrackIn process does not match the equipment process.</value>
+  </data>
+  <data name="TrackOutQuantityMismatch" xml:space="preserve">
+    <value>The TrackOut quantity does not match the TrackIn quantity.</value>
+  </data>
+  <data name="TrackOutResultRequired" xml:space="preserve">
+    <value>At least one TrackOut result is required.</value>
+  </data>
+  <data name="SnNotTrackedIn" xml:space="preserve">
+    <value>The serial number has not been tracked in.</value>
+  </data>
+  <data name="TrackOutEquipmentMismatch" xml:space="preserve">
+    <value>The TrackOut equipment does not match the TrackIn equipment.</value>
+  </data>
+  <data name="PassCannotOnlineRework" xml:space="preserve">
+    <value>A PASS result cannot request online rework.</value>
+  </data>
+  <data name="ProcessResultInvalid" xml:space="preserve">
+    <value>ProcessResult must be PASS or FAIL.</value>
+  </data>
+  <data name="PassCannotContainDefect" xml:space="preserve">
+    <value>A PASS result cannot contain defect information.</value>
+  </data>
+  <data name="FailRequiresValidDefect" xml:space="preserve">
+    <value>A FAIL result requires a valid defect code.</value>
+  </data>
+  <data name="MaterialComponentCountMismatch" xml:space="preserve">
+    <value>The loaded component count does not match the process requirement.</value>
+  </data>
+  <data name="RequiredMaterialNotLoaded" xml:space="preserve">
+    <value>A required material is not loaded on the equipment.</value>
+  </data>
+  <data name="LoadedMaterialExpired" xml:space="preserve">
+    <value>A loaded material has expired.</value>
+  </data>
+  <data name="LoadedMaterialInsufficient" xml:space="preserve">
+    <value>The remaining material quantity is insufficient.</value>
+  </data>
+  <data name="EapClientRequestAbnormal" xml:space="preserve">
+    <value>Abnormal request frequency detected. Please retry later.</value>
+  </data>
+  <data name="EapClientTemporarilyBlocked" xml:space="preserve">
+    <value>This EAP client has been temporarily blocked because of excessive requests.</value>
+  </data>
+  <data name="TokenRequestTooFrequent" xml:space="preserve">
+    <value>Token requests are too frequent. Please reuse the current token and retry later.</value>
+  </data>
+  <data name="ProjCodeNotMatch" xml:space="preserve">
+    <value>Project Code not match</value>
+  </data>
+  <data name="LogViewerBusy" xml:space="preserve">
+    <value>The log query service is busy. Please try again later.</value>
+  </data>
+  <data name="LogViewerStartDateAfterEndDate" xml:space="preserve">
+    <value>The start date cannot be later than the end date.</value>
+  </data>
+  <data name="LogViewerFutureDateNotAllowed" xml:space="preserve">
+    <value>Logs for future dates cannot be queried.</value>
+  </data>
+  <data name="LogViewerSearchDaysExceeded" xml:space="preserve">
+    <value>A single query can cover at most {0} days.</value>
+  </data>
+  <data name="LogViewerPageNumberExceeded" xml:space="preserve">
+    <value>The page number cannot exceed {0}.</value>
+  </data>
 </root>

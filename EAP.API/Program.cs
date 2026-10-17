@@ -19,6 +19,7 @@ builder.Services.AddApiLocalization();
 builder.Services.AddApiDocumentation(authenticationRequired);
 builder.Services.AddApiAuthentication(builder.Configuration, authenticationRequired);
 builder.Services.AddApiRateLimiting(builder.Configuration);
+builder.Services.AddApiLogViewer(builder.Configuration);
 builder.Services.AddApiHealthChecks(builder.Configuration);
 builder.Services.AddApiConfigurationValidation(builder.Configuration, builder.Environment.ContentRootPath);
 builder.Services.AddExternalHttpApiClient();
@@ -30,6 +31,7 @@ var app = builder.Build();
 
 app.UseMiddleware<TraceIdMiddleware>();
 app.UseMiddleware<RequestLoggingMiddleware>();
+app.UseMiddleware<HttpPayloadLoggingMiddleware>();
 app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseRequestLocalization();
 app.UseMiddleware<SecurityHeaderMiddleware>();

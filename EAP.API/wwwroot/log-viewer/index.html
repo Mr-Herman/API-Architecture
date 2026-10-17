@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EAP API Log Viewer</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/log-viewer/css/log-viewer.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <img src="/log-viewer/images/log-viewer.svg" alt="">
+      <div>
+        <h1 data-i18n="title">EAP API Log Viewer</h1>
+        <p data-i18n="subtitle">Read-only local .log viewer</p>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="panel filter-panel">
+      <div class="toolbar">
+        <div>
+          <label for="language" data-i18n="language">Language</label>
+          <select id="language"><option value="zh-CN">&#x4E2D;&#x6587;</option><option value="en-US">English</option></select>
+        </div>
+        <div><label for="startDate" data-i18n="startDate">Start date</label><input id="startDate" type="date"></div>
+        <div><label for="endDate" data-i18n="endDate">End date</label><input id="endDate" type="date"></div>
+        <div>
+          <label for="level" data-i18n="logType">Log type</label>
+          <select id="level"><option value="" data-i18n="all">All</option><option>INFO</option><option>WARN</option><option>ERROR</option><option>FATAL</option></select>
+        </div>
+        <div><label for="keyword" data-i18n="keyword">Endpoint / keyword</label><input id="keyword" maxlength="200" data-i18n-placeholder="keywordPlaceholder"></div>
+        <div><label for="traceId">TraceId</label><input id="traceId" maxlength="200" data-i18n-placeholder="tracePlaceholder"></div>
+        <div><button id="search" class="primary" data-i18n="search">Search</button></div>
+      </div>
+      <div id="notice" class="notice"></div>
+    </section>
+    <section class="panel table-panel">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th data-i18n="time">Time</th>
+              <th data-i18n="logType">Log type</th>
+              <th data-i18n="eventType">Event</th>
+              <th data-i18n="endpoint">Endpoint</th>
+              <th data-i18n="status">Status</th>
+              <th data-i18n="total">Total</th>
+              <th>TraceId</th>
+              <th data-i18n="details">Details</th>
+            </tr>
+          </thead>
+          <tbody id="rows"><tr><td colspan="8" class="empty" data-i18n="ready">Set filters and search</td></tr></tbody>
+        </table>
+      </div>
+      <div class="pager">
+        <span id="pageInfo" class="muted"></span>
+        <div><button id="previous" disabled data-i18n="previous">Previous</button><button id="next" disabled data-i18n="next">Next</button></div>
+      </div>
+    </section>
+  </main>
+  <dialog id="details">
+    <div class="dialog-head"><h2 data-i18n="logDetails">Log details</h2><button id="closeDetails" data-i18n="close">Close</button></div>
+    <div id="detailBody" class="dialog-body"></div>
+  </dialog>
+  <script src="/log-viewer/js/log-viewer.js" defer></script>
+</body>
+</html>

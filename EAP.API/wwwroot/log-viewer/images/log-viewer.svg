@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="EAP logs">
+  <path fill="#fff" opacity=".18" d="M24 3 43 13v22L24 45 5 35V13L24 3Z"/>
+  <path fill="none" stroke="#fff" stroke-width="2.5" d="M13 17h22M13 24h22M13 31h14"/>
+  <circle cx="35" cy="31" r="4" fill="#70e1f5"/>
+</svg>

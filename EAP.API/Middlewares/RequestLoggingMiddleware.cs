@@ -38,7 +38,7 @@ public sealed class RequestLoggingMiddleware
             finally
             {
                 var elapsed = Stopwatch.GetElapsedTime(started);
-                if (!ShouldSkipSuccessfulTechnicalRequest(context))
+                if (!ShouldSkipTechnicalRequest(context))
                 {
                     WriteRequestSummary(context, requestActivity, elapsed);
                 }
@@ -157,8 +157,16 @@ public sealed class RequestLoggingMiddleware
         return builder.ToString();
     }
 
-    private static bool ShouldSkipSuccessfulTechnicalRequest(HttpContext context)
+    private static bool ShouldSkipTechnicalRequest(HttpContext context)
     {
+        if (context.Request.Path.StartsWithSegments("/ops/logs")
+            || context.Request.Path.StartsWithSegments("/log-viewer")
+            || context.Request.Path.StartsWithSegments("/LogViewer")
+            || context.Request.Path.Equals("/favicon.ico"))
+        {
+            return true;
+        }
+
         if (context.Response.StatusCode >= StatusCodes.Status400BadRequest)
         {
             return false;

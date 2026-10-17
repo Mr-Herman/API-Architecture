@@ -109,8 +109,8 @@ async function initialize() {
     });
     const result = await response.json().catch(() => null);
 
-    if (!response.ok || result?.Status !== 1) {
-      throw new Error(result?.ReturnMessage || `${t('queryFailed')} (HTTP ${response.status})`);
+    if (!response.ok || result?.Success !== true) {
+      throw new Error(result?.Message || `${t('queryFailed')} (HTTP ${response.status})`);
     }
 
     state.pageSize = result.Data.PageSize;
@@ -144,8 +144,8 @@ async function loadPage(page) {
     });
     const result = await response.json().catch(() => null);
 
-    if (!response.ok || result?.Status !== 1) {
-      throw new Error(result?.ReturnMessage || `${t('queryFailed')} (HTTP ${response.status})`);
+    if (!response.ok || result?.Success !== true) {
+      throw new Error(result?.Message || `${t('queryFailed')} (HTTP ${response.status})`);
     }
 
     const data = result.Data;

@@ -13,6 +13,36 @@ namespace EAP.UnitTests.Api.RateLimiting;
 public sealed class EapClientRequestProtectionMiddlewareTests
 {
     [Fact]
+    public async Task InvokeAsync_WhenEndpointDisablesProtection_SkipsClientProtection()
+    {
+        var nextCalled = false;
+        var middleware = new EapClientRequestProtectionMiddleware(
+            _ =>
+            {
+                nextCalled = true;
+                return Task.CompletedTask;
+            },
+            NullLogger<EapClientRequestProtectionMiddleware>.Instance);
+        var context = CreateAuthenticatedContext(
+            new Claim(ClaimTypes.NameIdentifier, "legacy-client"));
+        context.SetEndpoint(new RouteEndpoint(
+            _ => Task.CompletedTask,
+            RoutePatternFactory.Parse("fis/Production/TrackIn"),
+            0,
+            new EndpointMetadataCollection(new SkipEapClientLimitAttribute()),
+            "TrackIn endpoint"));
+        var protection = new Mock<IEapClientRequestProtection>();
+        var localizer = new Mock<IMessageLocalizer>();
+
+        await middleware.InvokeAsync(context, protection.Object, localizer.Object);
+
+        Assert.True(nextCalled);
+        protection.Verify(
+            service => service.CheckBusinessRequest(It.IsAny<string>(), It.IsAny<string>()),
+            Times.Never);
+    }
+
+    [Fact]
     public async Task InvokeAsync_WhenAuthenticatedTokenHasNoClientId_Returns403()
     {
         var nextCalled = false;

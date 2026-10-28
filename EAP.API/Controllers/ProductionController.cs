@@ -1,5 +1,6 @@
 using EAP.Application.Interfaces;
 using EAP.Application.Interfaces.Commands;
+using EAP.Api.RateLimiting;
 using EAP.Models.Common;
 using EAP.Models.Requests.Production;
 using EAP.Models.Responses.Production;
@@ -44,12 +45,14 @@ public sealed class ProductionController : ControllerBase
     }
 
     [HttpPost("TrackIn")]
+    [SkipEapClientLimit]
     public Task<ApiResult<OperationResponse>> TrackIn([FromBody] TrackInRequest request, CancellationToken cancellationToken)
     {
         return _trackingService.TrackInAsync(request, cancellationToken);
     }
 
     [HttpPost("TrackOut")]
+    [SkipEapClientLimit]
     public Task<ApiResult<OperationResponse>> TrackOut([FromBody] TrackOutRequest request, CancellationToken cancellationToken)
     {
         return _trackingService.TrackOutAsync(request, cancellationToken);

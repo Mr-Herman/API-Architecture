@@ -1,4 +1,6 @@
+using System.Reflection;
 using EAP.Api.Controllers;
+using EAP.Api.RateLimiting;
 using EAP.Application.Interfaces;
 using EAP.Application.Interfaces.Commands;
 using EAP.Models.Common;
@@ -13,6 +15,17 @@ namespace EAP.UnitTests.Api.Controllers;
 
 public sealed class ProductionControllerTests
 {
+    [Theory]
+    [InlineData(nameof(ProductionController.TrackIn))]
+    [InlineData(nameof(ProductionController.TrackOut))]
+    public void TrackingEndpoint_DisablesEapClientRequestProtection(string methodName)
+    {
+        var method = typeof(ProductionController).GetMethod(methodName);
+
+        Assert.NotNull(method);
+        Assert.NotNull(method.GetCustomAttribute<SkipEapClientLimitAttribute>());
+    }
+
     [Fact]
     public async Task GetProcessDefects_ForwardsRequest()
     {

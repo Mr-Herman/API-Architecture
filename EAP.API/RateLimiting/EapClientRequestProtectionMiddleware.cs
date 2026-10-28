@@ -22,6 +22,7 @@ public sealed class EapClientRequestProtectionMiddleware
     {
         var endpoint = context.GetEndpoint();
         if (endpoint is null
+            || endpoint.Metadata.GetMetadata<SkipEapClientLimitAttribute>() is not null
             || endpoint.Metadata.GetMetadata<IAllowAnonymous>() is not null
             || context.User.Identity?.IsAuthenticated != true)
         {

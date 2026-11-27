@@ -36,6 +36,12 @@ public static class AuthenticationExtensions
                 "API clients must use unique secrets.")
             .ValidateOnStart();
 
+        services.AddOptions<LegacyPasswordOptions>()
+            .Bind(configuration.GetSection(LegacyPasswordOptions.SectionName))
+            .Validate(options => !string.IsNullOrWhiteSpace(options.Key),
+                "Legacy password encoder key is required.")
+            .ValidateOnStart();
+
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer();
 

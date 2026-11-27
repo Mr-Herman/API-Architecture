@@ -1,17 +1,24 @@
 using System.Text;
 using EAP.Application.Interfaces;
+using EAP.Infrastructure.Options;
+using Microsoft.Extensions.Options;
 
 namespace EAP.Infrastructure.Security;
 
 public sealed class LegacyPasswordEncoder : ILegacyPasswordEncoder
 {
     private const int BoxLength = 255;
-    private const string PasswordKey = "#4c#2@!";
+    private readonly string _passwordKey;
+
+    public LegacyPasswordEncoder(IOptions<LegacyPasswordOptions> options)
+    {
+        _passwordKey = options.Value.Key;
+    }
 
     public string Encode(string value)
     {
         ArgumentNullException.ThrowIfNull(value);
-        var box = CreateBox(PasswordKey);
+        var box = CreateBox(_passwordKey);
         var input = Encoding.Unicode.GetBytes(value);
         var output = new byte[input.Length];
         var i = 0;

@@ -7,6 +7,7 @@
 *.sln.docstates
 *.rsuser
 *.pubxml.user
+*.pubxml
 
 # .NET build output
 [Bb]in/
@@ -22,6 +23,7 @@ coverage.*
 *.coveragexml
 
 # Local environment overrides
+#.secrets/
 appsettings.Local.json
 appsettings.*.Local.json
 .env

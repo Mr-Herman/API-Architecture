@@ -45,7 +45,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHttpsRedirection();
 }
 
-app.UseStaticFiles();
+app.UseApiStaticFiles();
 app.UseApiDocumentation();
 
 app.UseAuthentication();

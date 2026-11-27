@@ -151,7 +151,7 @@ async function loadPage(page) {
     const data = result.Data;
     state.page = data.Page;
     state.hasNext = data.HasNext;
-    state.items = data.Items || [];
+    state.items = (data.Items || []).filter(isUsefulLogEntry);
     renderRows();
     el.previous.disabled = !data.HasPrevious;
     el.next.disabled = !data.HasNext;
@@ -167,6 +167,60 @@ async function loadPage(page) {
   } finally {
     el.search.disabled = false;
   }
+}
+
+function isUsefulLogEntry(item) {
+  const requestMatch = String(item.RawText || '').match(
+    /\]\s+(GET|POST|PUT|PATCH|DELETE|HEAD|OPTIONS)\s+(\/[^ |?]*)/i
+  );
+  const method = String(item.HttpMethod || requestMatch?.[1] || '').toUpperCase();
+  const path = String(item.Path || requestMatch?.[2] || '').toLowerCase();
+
+  if (!path) {
+    const level = String(item.Level || '').toUpperCase();
+    const logType = String(item.LogType || '').toUpperCase();
+    return ['WARN', 'ERROR', 'FATAL'].includes(level)
+      || logType.endsWith('_ERROR')
+      || logType.endsWith('_FAILED');
+  }
+
+  if (method === 'HEAD' || method === 'OPTIONS' || path === '/') {
+    return false;
+  }
+
+  const technicalPaths = [
+    '/ops/logs',
+    '/log-viewer',
+    '/swagger',
+    '/health'
+  ];
+  if (technicalPaths.some(prefix => path === prefix || path.startsWith(prefix + '/'))) {
+    return false;
+  }
+
+  const browserMetadataPaths = new Set([
+    '/favicon.ico',
+    '/robots.txt',
+    '/sitemap.xml',
+    '/site.webmanifest',
+    '/browserconfig.xml',
+    '/apple-touch-icon.png',
+    '/apple-touch-icon-precomposed.png',
+    '/.well-known/appspecific/com.chrome.devtools.json'
+  ]);
+  if (browserMetadataPaths.has(path)) {
+    return false;
+  }
+
+  if (/\.(css|eot|gif|ico|jpeg|jpg|js|map|png|svg|ttf|webp|woff|woff2)$/.test(path)) {
+    return false;
+  }
+
+  const statusCode = Number(item.StatusCode);
+  const hasNoControllerTiming = !Array.isArray(item.TimingSteps) || item.TimingSteps.length === 0;
+  const isRedirect = statusCode >= 300 && statusCode < 400;
+  const isUnknownRoute = statusCode === 404 || statusCode === 405;
+  return !hasNoControllerTiming || (!isRedirect && !isUnknownRoute);
 }
 
 function validateDates() {

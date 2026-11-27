@@ -40,4 +40,16 @@ public sealed class LogEntryParserTests
         Assert.Contains("EAP.DataAccess.Repository.Execute", entry.RawText);
         Assert.Equal(log, entry.RawText);
     }
+
+    [Fact]
+    public void Parse_RootRequest_ReadsRootPath()
+    {
+        const string log = "2026-10-17 10:00:00.000 | INFO | [REQUEST] GET / | Status=302 | Total=1.7ms | Pipeline | Trace=trace-root";
+
+        var entry = _parser.Parse(log);
+
+        Assert.NotNull(entry);
+        Assert.Equal("GET", entry.HttpMethod);
+        Assert.Equal("/", entry.Path);
+    }
 }

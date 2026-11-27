@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Controllers;
 
 namespace EAP.Api.Logging;
 
@@ -29,6 +30,11 @@ internal static class TechnicalRequestFilter
             return true;
         }
 
+        if (context.GetEndpoint()?.Metadata.GetMetadata<ControllerActionDescriptor>() is null)
+        {
+            return true;
+        }
+
         if (context.Response.StatusCode >= StatusCodes.Status400BadRequest)
         {
             return false;
@@ -48,11 +54,29 @@ internal static class TechnicalRequestFilter
             || IsStaticFile(request.Path);
     }
 
+    public static bool ShouldSkipLogViewerEntry(string? method, string? path)
+    {
+        if (string.IsNullOrWhiteSpace(path))
+        {
+            return false;
+        }
+
+        var requestMethod = method ?? string.Empty;
+        var requestPath = new PathString(path);
+        return IsAlwaysIgnored(requestMethod, requestPath)
+            || HttpMethods.IsOptions(requestMethod)
+            || IsDocumentationOrHealthPath(requestPath)
+            || IsStaticFile(requestPath);
+    }
+
     private static bool IsAlwaysIgnored(HttpRequest request)
     {
-        var path = request.Path;
+        return IsAlwaysIgnored(request.Method, request.Path);
+    }
 
-        return HttpMethods.IsHead(request.Method)
+    private static bool IsAlwaysIgnored(string method, PathString path)
+    {
+        return HttpMethods.IsHead(method)
             || path.Equals("/")
             || path.StartsWithSegments("/ops/logs")
             || path.StartsWithSegments("/log-viewer")
@@ -85,4 +109,3 @@ internal static class TechnicalRequestFilter
             && StaticFileExtensions.Contains(extension);
     }
 }
-

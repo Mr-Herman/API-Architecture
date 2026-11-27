@@ -91,6 +91,32 @@ public sealed class LogFileReaderTests : IDisposable
         Assert.Contains("Status", page.Items[0].ResponseBody);
     }
 
+    [Fact]
+    public async Task TryQueryAsync_HidesTechnicalRequestsFromExistingLogFiles()
+    {
+        var date = new DateOnly(2026, 10, 17);
+        var log = string.Join(
+            Environment.NewLine,
+            "2026-10-17 10:00:00.000 | INFO | [REQUEST] GET / | Status=302 | Total=1.0ms | Pipeline | Trace=trace-root",
+            "2026-10-17 10:00:01.000 | WARN | [REQUEST_FAILED] GET /ops/logs/api | Status=404 | Total=1.0ms | Pipeline | Trace=trace-viewer",
+            "2026-10-17 10:00:02.000 | INFO | [REQUEST] GET /swagger/index.html | Status=200 | Total=1.0ms | Pipeline | Trace=trace-swagger",
+            "2026-10-17 10:00:02.100 | WARN | [REQUEST_FAILED] GET /unknown | Status=404 | Total=1.0ms | Pipeline | Trace=trace-unknown",
+            "2026-10-17 10:00:02.200 | INFO | Application service started.",
+            "2026-10-17 10:00:03.000 | INFO | [REQUEST] POST /fis/Equipment/GetEqpStatus | Status=200 | Total=20.0ms | Pipeline | Trace=trace-business");
+        await File.WriteAllTextAsync(
+            Path.Combine(_directory, "eap-api-2026-10-17.log"),
+            log + Environment.NewLine);
+
+        using var reader = CreateReader();
+        var page = await reader.TryQueryAsync(
+            new LogQueryRequest { StartDate = date, EndDate = date },
+            CancellationToken.None);
+
+        Assert.NotNull(page);
+        Assert.Single(page.Items);
+        Assert.Equal("/fis/Equipment/GetEqpStatus", page.Items[0].Path);
+    }
+
     public void Dispose()
     {
         if (Directory.Exists(_directory))

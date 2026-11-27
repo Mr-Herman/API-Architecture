@@ -15,4 +15,23 @@ public static class LogViewerExtensions
 
         return services;
     }
+
+    public static WebApplication UseApiStaticFiles(this WebApplication app)
+    {
+        app.UseStaticFiles(new StaticFileOptions
+        {
+            OnPrepareResponse = context =>
+            {
+                if (!context.Context.Request.Path.StartsWithSegments("/log-viewer"))
+                {
+                    return;
+                }
+
+                context.Context.Response.Headers.CacheControl = "no-cache, must-revalidate";
+                context.Context.Response.Headers.Pragma = "no-cache";
+            }
+        });
+
+        return app;
+    }
 }

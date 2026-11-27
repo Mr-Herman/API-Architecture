@@ -109,7 +109,7 @@ public sealed partial class LogEntryParser
     [GeneratedRegex("\\[(?<value>[A-Z_]+)\\]", RegexOptions.CultureInvariant)]
     private static partial Regex LogTypePattern();
 
-    [GeneratedRegex("(?:^|\\] )(?<method>GET|POST|PUT|PATCH|DELETE|HEAD|OPTIONS) (?<path>/[^ |?]+)", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)]
+    [GeneratedRegex("(?:^|\\] )(?<method>GET|POST|PUT|PATCH|DELETE|HEAD|OPTIONS) (?<path>/[^ |?]*)", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)]
     private static partial Regex RequestPattern();
 
     [GeneratedRegex("Status=(?<value>\\d+)", RegexOptions.CultureInvariant)]

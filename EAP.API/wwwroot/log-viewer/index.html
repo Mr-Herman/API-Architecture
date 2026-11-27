@@ -4,13 +4,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>EAP API Log Viewer</title>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/log-viewer/css/log-viewer.css">
+  <script>
+    window.logViewerAssetVersion = Date.now().toString();
+    window.withLogViewerAssetVersion = function (path) {
+      return path + '?v=' + window.logViewerAssetVersion;
+    };
+
+    const favicon = document.createElement('link');
+    favicon.rel = 'icon';
+    favicon.href = window.withLogViewerAssetVersion('/favicon.ico');
+
+    const stylesheet = document.createElement('link');
+    stylesheet.rel = 'stylesheet';
+    stylesheet.href = window.withLogViewerAssetVersion('/log-viewer/css/log-viewer.css');
+
+    document.head.append(favicon, stylesheet);
+  </script>
 </head>
 <body>
   <header>
     <div class="brand">
-      <img src="/log-viewer/images/log-viewer.svg" alt="">
+      <img id="logViewerLogo" alt="">
       <div>
         <h1 data-i18n="title">EAP API Log Viewer</h1>
         <p data-i18n="subtitle">Read-only local .log viewer</p>
@@ -64,6 +78,13 @@
     <div class="dialog-head"><h2 data-i18n="logDetails">Log details</h2><button id="closeDetails" data-i18n="close">Close</button></div>
     <div id="detailBody" class="dialog-body"></div>
   </dialog>
-  <script src="/log-viewer/js/log-viewer.js" defer></script>
+  <script>
+    document.getElementById('logViewerLogo').src =
+      window.withLogViewerAssetVersion('/log-viewer/images/log-viewer.svg');
+
+    const applicationScript = document.createElement('script');
+    applicationScript.src = window.withLogViewerAssetVersion('/log-viewer/js/log-viewer.js');
+    document.body.appendChild(applicationScript);
+  </script>
 </body>
 </html>

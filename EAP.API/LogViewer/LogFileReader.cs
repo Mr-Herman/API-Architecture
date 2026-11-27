@@ -304,11 +304,32 @@ public sealed class LogFileReader : ILogFileReader, IDisposable
             continuationLines.Clear();
             continuationLength = 0;
 
-            if (entry is not null)
+            if (entry is not null && IsUsefulLogEntry(entry))
             {
                 yield return entry;
             }
         }
+    }
+
+    private static bool IsUsefulLogEntry(LogEntryResponse entry)
+    {
+        if (TechnicalRequestFilter.ShouldSkipLogViewerEntry(entry.HttpMethod, entry.Path))
+        {
+            return false;
+        }
+
+        if (string.IsNullOrWhiteSpace(entry.Path))
+        {
+            var isWarningOrError = entry.Level is "WARN" or "ERROR" or "FATAL";
+            var isFailureEvent = entry.LogType.EndsWith("_ERROR", StringComparison.OrdinalIgnoreCase)
+                || entry.LogType.EndsWith("_FAILED", StringComparison.OrdinalIgnoreCase);
+            return isWarningOrError || isFailureEvent;
+        }
+
+        var hasNoControllerTiming = entry.TimingSteps.Count == 0;
+        var isRedirect = entry.StatusCode is >= 300 and < 400;
+        var isUnknownRoute = entry.StatusCode is 404 or 405;
+        return !hasNoControllerTiming || (!isRedirect && !isUnknownRoute);
     }
 
     private static string BuildRawText(string header, List<string> continuationLines)

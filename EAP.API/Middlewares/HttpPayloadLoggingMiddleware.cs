@@ -27,7 +27,7 @@ public sealed class HttpPayloadLoggingMiddleware
 
     public async Task InvokeAsync(HttpContext context, HttpPayloadSanitizer sanitizer)
     {
-        if (ShouldSkip(context.Request.Path))
+        if (TechnicalRequestFilter.ShouldSkipPayloadLog(context.Request))
         {
             await _next(context);
             return;
@@ -189,14 +189,4 @@ public sealed class HttpPayloadLoggingMiddleware
         return contentType.Contains("json",StringComparison.OrdinalIgnoreCase);
     }
 
-    private static bool ShouldSkip(PathString path)
-    {
-        return path.StartsWithSegments("/fis/Auth")
-            || path.StartsWithSegments("/ops/logs")
-            || path.StartsWithSegments("/log-viewer")
-            || path.StartsWithSegments("/LogViewer")
-            || path.StartsWithSegments("/swagger")
-            || path.StartsWithSegments("/health")
-            || path.Equals("/favicon.ico");
-    }
 }

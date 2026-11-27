@@ -97,6 +97,18 @@ public abstract class RepositoryBase
         return result.AsList();
     }
 
+    protected async Task<DataTable> QueryDataTableAsync(string sql, object? parameters, CancellationToken cancellationToken, [CallerMemberName] string operation = "")
+    {
+        using var timing = StartTiming(operation);
+        await using var connection = await OpenConnectionAsync(cancellationToken);
+        var command = CreateCommand(sql, parameters, cancellationToken);
+        using var reader = await connection.ExecuteReaderAsync(command);
+        var table = new DataTable();
+        table.Load(reader);
+
+        return table;
+    }
+
     protected async Task<int> ExecuteStoredProcedureAsync(string procedureName, object? parameters, CancellationToken cancellationToken, [CallerMemberName] string operation = "")
     {
         using var timing = StartTiming(operation);

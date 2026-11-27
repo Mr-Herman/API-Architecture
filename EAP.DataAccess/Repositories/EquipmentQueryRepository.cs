@@ -24,6 +24,8 @@ public sealed class EquipmentQueryRepository : RepositoryBase, IEquipmentQueryRe
             FROM EQUIPMENT_STATUS_WIP
             WHERE EQUIPMENT_ID = :EquipmentId
             ";
+        //测试使用 DataTable
+        //var dt = await QueryDataTableAsync(sql, new { EquipmentId = equipmentId }, cancellationToken);
 
         return await QueryFirstOrDefaultAsync<EquipmentStatusEntity>(sql, new { EquipmentId = equipmentId }, cancellationToken);
     }
